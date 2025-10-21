@@ -1,0 +1,29 @@
+<form class="form m-auto mt-5">
+
+    <div class="text-center mb-5">
+        <img src="images/logo.svg" alt="логотип">
+    </div>
+    <h1 class="title text-center mb-4">Вход</h1>
+    <div class="input-group col-4">
+        <span class="input-group-text " id="basic-addon1">
+            <img src="images/mail.svg" alt="иконка">
+        </span>
+        <input id="email" type="text" class="form-control" placeholder="Электронная почта">
+    </div>
+    <div class="error" id="email-error">Некорректный email</div>
+    <div class="input-group mt-3 flex-nowrap">
+        <span class="input-group-text " id="addon-wrapping">
+            <img src="images/lock.svg" alt="иконка">
+        </span>
+        <input id="password" type="password" class="form-control" placeholder="Пароль">
+    </div>
+    <div class="error" id="password-error">Некорректный пароль</div>
+    <div class="form-check mt-3 mb-4">
+        <input class="form-check-input border-dark-subtle" type="checkbox" value="" id="checkDefault">
+        <label class="form-check-label" for="checkDefault">
+            Запомнить меня
+        </label>
+    </div>
+    <button id="process" type="button" class="btn btn-primary w-100 mb-1">Войти</button>
+    <div>Ещё нет аккаунта? <a href="#/sign-up">Пройдите регистрацию</a></div>
+</form>

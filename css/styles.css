@@ -56,6 +56,8 @@ a span {
 
 .accordion-body {
     color: #0D6EFD;
+    text-decoration: none;
+    display: block;
 }
 
 .choosen {
@@ -146,3 +148,4 @@ a.user {
 .chart-title {
     color: #052C65;
 }
+
