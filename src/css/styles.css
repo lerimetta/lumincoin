@@ -37,7 +37,7 @@ a span {
 
 .accordion-button:not(.collapsed)::after {
     color: white;
-    background-image: url('../images/arrow.svg');
+    background-image: url('/assets/images/arrow.svg');
     transform: rotate(360deg);
     background-position: 50%;
 }

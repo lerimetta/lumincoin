@@ -49,7 +49,6 @@ export class Auth {
             }
         }
 
-
     }
     static setTokens(accessToken, refreshToken) {
         localStorage.setItem(this.accessTokenKey, accessToken);
@@ -69,6 +68,13 @@ export class Auth {
             return JSON.parse(userInfo);
         }
         return null;
+    }
+
+    static authCheck() {
+        const accessToken = localStorage.getItem(this.accessTokenKey);
+        if (!accessToken) {
+            location.href = '#/';
+        }
     }
 
 }

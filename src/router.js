@@ -1,8 +1,7 @@
 
-import { Auth } from "../services/auth.js";
-import { Form } from "./form.js";
-import { Main } from "./main.js";
-
+import { Auth } from "./services/auth.js";
+import { Form } from "./components/form.js";
+import { Main } from "./components/main.js";
 
 export class Router {
     constructor() {
@@ -16,7 +15,7 @@ export class Router {
             {
                 route: '#/',
                 title: 'Авторизация | Lumincoin',
-                template: 'templates/login.html',
+                template: 'src/templates/login.html',
                 load: () => {
                     new Form('login');
                 }
@@ -24,7 +23,7 @@ export class Router {
             {
                 route: '#/sign-up',
                 title: 'Регистрация | Lumincoin',
-                template: 'templates/sign-up.html',
+                template: 'src/templates/sign-up.html',
                 load: () => {
                     new Form('signup');
                 }
@@ -32,81 +31,82 @@ export class Router {
             {
                 route: '#/main',
                 title: 'Главная | Lumincoin',
-                template: 'templates/main.html',
+                template: 'src/templates/main.html',
                 load: () => {
+                    Auth.authCheck();
                     new Main();
                 }
             },
             {
                 route: '#/inc-exp',
                 title: 'Доходы & расходы | Lumincoin',
-                template: 'templates/inc-exp.html',
+                template: 'src/templates/inc-exp.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/inc-exp-create',
                 title: 'Создание дохода/расхода | Lumincoin',
-                template: 'templates/inc-exp-create.html',
+                template: 'src/templates/inc-exp-create.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/inc-exp-edit',
                 title: 'Редактирование дохода/расхода | Lumincoin',
-                template: 'templates/inc-exp-edit.html',
+                template: 'src/templates/inc-exp-edit.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/incoms',
                 title: 'Доходы | Lumincoin',
-                template: 'templates/incoms.html',
+                template: 'src/templates/incoms.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/incoms-edit',
                 title: 'Редактирование дохода | Lumincoin',
-                template: 'templates/incoms-edit.html',
+                template: 'src/templates/incoms-edit.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/incoms-create',
                 title: 'Создание дохода | Lumincoin',
-                template: 'templates/incoms-create.html',
+                template: 'src/templates/incoms-create.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/expenses',
                 title: 'Расходы | Lumincoin',
-                template: 'templates/expenses.html',
+                template: 'src/templates/expenses.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/expenses-edit',
                 title: 'Редактирование расхода | Lumincoin',
-                template: 'templates/expenses-edit.html',
+                template: 'src/templates/expenses-edit.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
             {
                 route: '#/expenses-create',
                 title: 'Создание расхода | Lumincoin',
-                template: 'templates/expenses-create.html',
+                template: 'src/templates/expenses-create.html',
                 load: () => {
-
+                    Auth.authCheck();
                 }
             },
 
