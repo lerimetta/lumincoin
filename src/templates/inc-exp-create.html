@@ -60,42 +60,48 @@
                 </div>
             </div>
         </div>
-        <div class="balance ps-4 fw-medium">Баланс: <span class="text-primary " id="balance">500$</span></div>
+        <div class="balance ps-4 fw-medium">Баланс: <span class="text-primary " id="balance">0</span></div>
         <hr>
-        <div class="dropdown ps-4 pb-4"> <a href="#"
+        <div class="dropdown ps-4 pb-4"> <a href="javascript:void(0);"
                 class="user d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="dropdown"
                 aria-expanded="false"> <img src="assets/images/user.svg" alt="" width="36" height="36"
-                    class="rounded-circle me-2"> Роман Чернов</a>
+                    class="rounded-circle me-2"> <span id="user">Пользователь</span></a>
             <ul class="dropdown-menu text-small shadow">
-                <li><a class="dropdown-item text-center" href="#">Выйти</a></li>
+                <li><a class="dropdown-item text-center" href="#/logout">Выйти</a></li>
             </ul>
         </div>
 
     </div>
     <div class="p-4">
-
         <h1 class="title mt-5 mb-4">Создание дохода/расхода</h1>
         <div class="mb-3">
-            <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
-                placeholder="Тип...">
+            <!-- <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
+                placeholder="Тип..."> -->
+                <select name="" class="form-control" style="max-width: 397px;" id="select-type">
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
-                placeholder="Категория...">
+            <!-- <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
+                placeholder="Категория..."> -->
+                <select name="" class="form-control" style="max-width: 397px;" id="select-category">
+                    <option value="category">Категория...</option>
+                </select>
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
+            <input type="text" class="form-control" style="max-width: 397px;" id="amount"
                 placeholder="Сумма в $...">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
+            <input type="date" class="form-control" style="max-width: 397px;" id="date"
                 placeholder="Дата...">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" style="max-width: 397px;" id="exampleFormControlInput1"
+            <input type="text" class="form-control" style="max-width: 397px;" id="comment"
                 placeholder="Комментарий...">
         </div>
-        <a href="#" class="btn btn-success me-2">Создать</a>
-        <a href="#" class="btn btn-danger">Отмена</a>
+        <buton type="button" class="btn btn-success me-2" id="button-create">Создать</buton>
+        <a href="#/inc-exp" class="btn btn-danger">Отмена</a>
     </div>
 </div>

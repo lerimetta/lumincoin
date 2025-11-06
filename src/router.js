@@ -1,7 +1,15 @@
-
 import { Auth } from "./services/auth.js";
 import { Form } from "./components/form.js";
 import { Main } from "./components/main.js";
+import { Incoms } from "./components/incoms.js";
+import { CreateIncom } from "./components/create-incom.js";
+import { IncExp } from "./components/inc-exp.js";
+import { IncExpCreate } from "./components/inc-exp-create.js";
+import { Expenses } from "./components/expenses.js";
+import { EditIncome } from "./components/incomes-edit.js";
+import { CreateExpense } from "./components/create-expense.js";
+import { EditExpense } from "./components/expenses-edit.js";
+
 
 export class Router {
     constructor() {
@@ -43,6 +51,7 @@ export class Router {
                 template: 'src/templates/inc-exp.html',
                 load: () => {
                     Auth.authCheck();
+                    new IncExp();
                 }
             },
             {
@@ -51,6 +60,7 @@ export class Router {
                 template: 'src/templates/inc-exp-create.html',
                 load: () => {
                     Auth.authCheck();
+                    new IncExpCreate();
                 }
             },
             {
@@ -67,6 +77,7 @@ export class Router {
                 template: 'src/templates/incoms.html',
                 load: () => {
                     Auth.authCheck();
+                    new Incoms();
                 }
             },
             {
@@ -75,6 +86,7 @@ export class Router {
                 template: 'src/templates/incoms-edit.html',
                 load: () => {
                     Auth.authCheck();
+                    new EditIncome();
                 }
             },
             {
@@ -83,6 +95,7 @@ export class Router {
                 template: 'src/templates/incoms-create.html',
                 load: () => {
                     Auth.authCheck();
+                    new CreateIncom();
                 }
             },
             {
@@ -91,6 +104,7 @@ export class Router {
                 template: 'src/templates/expenses.html',
                 load: () => {
                     Auth.authCheck();
+                    new Expenses();
                 }
             },
             {
@@ -99,6 +113,7 @@ export class Router {
                 template: 'src/templates/expenses-edit.html',
                 load: () => {
                     Auth.authCheck();
+                    new EditExpense();
                 }
             },
             {
@@ -107,6 +122,7 @@ export class Router {
                 template: 'src/templates/expenses-create.html',
                 load: () => {
                     Auth.authCheck();
+                    new CreateExpense();
                 }
             },
 
@@ -114,12 +130,12 @@ export class Router {
     }
 
     async openRoute() {
-        const urlRoute = window.location.hash;
-        // if (urlRoute === '#/logout') {
-        //     await Auth.logout();
-        //     window.location.href = '#/';
-        //     return;
-        // }
+        const urlRoute = window.location.hash.split('?')[0];
+        if (urlRoute === '#/logout') {
+            await Auth.logout();
+            window.location.href = '#/';
+            return;
+        }
         const newRoute = this.routes.find(item => {
             return item.route === urlRoute;
         });

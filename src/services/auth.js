@@ -1,9 +1,10 @@
 import config from "../../config/config.js";
+import { CustomHttp } from "./custom-http.js";
 
 export class Auth {
-    static accessTokenKey = 'accessToken'
-    static refreshTokenKey = 'refreshToken'
-    static userInfoKey = 'userInfo'
+    static accessTokenKey = 'accessToken';
+    static refreshTokenKey = 'refreshToken';
+    static userInfoKey = 'userInfo';
 
     static async processUnauthorizedResponse() {
         const refreshToken = localStorage.getItem(this.refreshTokenKey);
@@ -18,8 +19,8 @@ export class Auth {
             });
             if (response && response.status === 200) {
                 const result = await response.json();
-                if (result && !result.error) {
-                    this.setTokens(result.accessToken, result.refreshToken);
+                if (result) {
+                    this.setTokens(result.tokens.accessToken, result.tokens.refreshToken);
                     return true;
                 } else {
                     throw new Error(result.message);
@@ -70,10 +71,49 @@ export class Auth {
         return null;
     }
 
-    static authCheck() {
+    static async authCheck() {
         const accessToken = localStorage.getItem(this.accessTokenKey);
         if (!accessToken) {
             location.href = '#/';
+            return;
+        }
+        const userName = JSON.parse(localStorage.getItem(this.userInfoKey)).name + ' ' + JSON.parse(localStorage.getItem(this.userInfoKey)).lastName;
+        document.getElementById('user').innerText = userName;
+
+    }
+    static async getBalance() {
+        try {
+            let accessToken = localStorage.getItem(Auth.accessTokenKey);
+            const response = await fetch(config.host + '/balance', {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json',
+                    'x-auth-token': accessToken,
+                }
+            });
+            if (response) {
+                const result = await response.json();
+                let balance = document.getElementById('balance');
+                balance.innerText = result.balance + '$';
+                return;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    static async getBalance2() {
+        try {
+            const result = await CustomHttp.request(config.host + '/balance');
+            if (result) {
+                let balance = document.getElementById('balance');
+                balance.innerText = result.balance + '$';
+                return;
+            }
+        }
+        catch (error) {
+            console.log(error);
         }
     }
 

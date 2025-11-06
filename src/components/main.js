@@ -5,7 +5,7 @@ export class Main {
         new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+                labels: ['Депозиты', 'Зарплата', 'Сбережения', 'Инвестиции', 'Дивиденды'],
                 datasets: [{
                     label: '# of Votes',
                     data: [25, 25, 10, 10, 5],
@@ -16,6 +16,8 @@ export class Main {
                         'rgb(255, 193, 7 )',
                         'rgb(32, 201, 151 )',
                         'rgb(13, 110, 253 )',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
                     ],
                     hoverOffset: 4,
                 }],
@@ -33,10 +35,10 @@ export class Main {
         new Chart(ctx2, {
             type: 'pie',
             data: {
-                labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+                labels: ['Еда', 'Жилье', 'Здоровье', 'Кафе', 'Авто', 'Одежда', 'Развлечения', 'Счета', 'Спорт'],
                 datasets: [{
                     label: '# of Votes',
-                    data: [25, 25, 10, 10, 5],
+                    data: [25, 25, 10, 10, 5, 15, 5],
                     borderWidth: 1,
                     backgroundColor: [
                         'rgb(220, 53, 69)',
@@ -44,6 +46,8 @@ export class Main {
                         'rgb(255, 193, 7 )',
                         'rgb(32, 201, 151 )',
                         'rgb(13, 110, 253 )',
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
                     ],
                     hoverOffset: 4,
                 }],
