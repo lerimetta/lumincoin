@@ -1,8 +1,7 @@
-import config from "../../config/config.js";
-import { CustomHttp } from "../services/custom-http.js";
+import { Auth } from "../services/auth.js";
 
 export class IncExp {
     constructor() {
-       
+       Auth.getBalance2();
     }
 }

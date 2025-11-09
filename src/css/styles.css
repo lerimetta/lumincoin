@@ -116,7 +116,7 @@ a.user {
     color: white;
 }
 
-.filter a {
+.filter button {
     width: 100px;
 }
 
@@ -149,3 +149,65 @@ a.user {
     color: #052C65;
 }
 
+/* input[type="date"] {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    border: none;
+    width: 30px;
+    font-size: 25px;
+
+}
+
+input[type="date"]:focus {
+    outline: none;
+}
+
+input[type="date"]::after {
+    position: absolute;
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+    content: "xcvxv";
+
+} */
+.date {
+    position: relative;
+    opacity: 0;
+    width: 30px;
+}
+
+.date::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.date::-webkit-inner-spin-button,
+
+.date::-webkit-clear-button {
+    z-index: 1;
+
+}
+
+.with-date-span {
+    position: absolute;
+    top: 4px;
+}
+
+.filter {
+    position: relative;
+    vertical-align: center;
+}
+
+.with-date-span {
+    color: #6C757D;
+    border-bottom: 2px solid #6C757D;
+}

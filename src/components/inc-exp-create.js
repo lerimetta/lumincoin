@@ -1,4 +1,5 @@
 import config from "../../config/config.js";
+import { Auth } from "../services/auth.js";
 import { CustomHttp } from "../services/custom-http.js";
 
 
@@ -15,24 +16,22 @@ export class IncExpCreate {
         this.createButton = document.getElementById('button-create');
         this.createButton.onclick = this.createCategory.bind(this);
         this.selectType = document.getElementById('select-type');
+
         this.selectType.onchange = () => {
             this.params.type = this.selectType.value;
 
         }
+        this.selectType.addEventListener('change', this.init.bind(this));
         this.selectCategory = document.getElementById('select-category');
+        this.selectOptions = this.selectCategory.getElementsByTagName('option');
         this.selectCategory.onchange = () => {
             let categoryName = this.selectCategory.value;
             let categortID = this.result.find(el => el.title === categoryName);
             this.params.category_id = categortID.id;
-            console.log(categortID);
-            console.log(categortID.id);
-
         }
         this.amount = document.getElementById('amount');
         this.amount.onchange = () => {
-            this.params.amount = this.amount.value;
-            console.log(this.params);
-
+            this.params.amount = Number(this.amount.value);
         }
         this.date = document.getElementById('date');
         this.date.onchange = () => {
@@ -42,22 +41,29 @@ export class IncExpCreate {
         this.comment = document.getElementById('comment');
         this.comment.onchange = () => {
             this.params.comment = this.comment.value;
-            console.log(this.params);
         }
-
         this.init();
+      
     }
 
     async init() {
         try {
-            this.result = await CustomHttp.request(config.host + '/categories/income');
-            if (this.result) {
-                if (this.result.error) {
-                    throw new Error(result.error);
+            if (this.selectType.value === 'income') {
+                this.result = await CustomHttp.request(config.host + '/categories/income');
+                if (this.result) {
+                    this.showOptions();
+                    Auth.getBalance();
+                    this.in();
+                    return;
                 }
+
+            } else {
+                this.result = await CustomHttp.request(config.host + '/categories/expense');
                 this.showOptions();
+                Auth.getBalance();
                 return;
             }
+
         }
         catch (error) {
             console.log(error);
@@ -66,6 +72,9 @@ export class IncExpCreate {
     }
 
     showOptions() {
+        for (let i = this.selectOptions.length - 1; i >= 1; i--) {
+            this.selectOptions[i].remove();
+        }
         this.result.forEach(element => {
             const selectElement = document.getElementById('select-category');
             const optionElement = document.createElement('option');
@@ -81,6 +90,7 @@ export class IncExpCreate {
                 if (this.result.error) {
                     throw new Error(result.error);
                 }
+             
                 return;
             }
         }

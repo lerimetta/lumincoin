@@ -1,3 +1,5 @@
+import { Auth } from "../services/auth.js";
+
 export class Main {
     constructor() {
         const ctx = document.getElementById('myChart');
@@ -63,6 +65,7 @@ export class Main {
         });
         Chart.defaults.color = '#052C65';
         Chart.defaults.font.weight = '500';
+        Auth.getBalance2();
     }
 
 }

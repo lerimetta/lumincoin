@@ -71,17 +71,19 @@
     <div class="p-4">
         <h1 class="title mt-5 mb-4">Доходы и расходы</h1>
         <a href="#/inc-exp-create" class="btn btn-success me-2">Создать доход</a>
-        <a href="#" class="btn btn-danger ">Создать расход</a>
+        <a href="#/inc-exp-create" class="btn btn-danger ">Создать расход</a>
         <div class="filter my-5">
-            <a href="#" class="btn btn-secondary me-2">Сегодня</a>
-            <a href="#" class="btn btn-outline-secondary me-2">Неделя</a>
-            <a href="#" class="btn btn-outline-secondary me-2">Месяц</a>
-            <a href="#" class="btn btn-outline-secondary me-2">Год</a>
-            <a href="#" class="btn btn-outline-secondary me-2">Все</a>
-            <a href="#" class="btn btn-outline-secondary me-2">Интервал</a>
-            с <a href="" class="mx-1 text-secondary">Дата</a> по <a href="" class="mx-1 text-secondary">Дата</a>
-        </div>
-        <table class="table text-center" style="width: 1000px;">
+            <button class="btn btn-secondary me-2">Сегодня</button>
+            <button class="btn btn-outline-secondary me-2">Неделя</button>
+            <button class="btn btn-outline-secondary me-2">Месяц</button>
+            <button class="btn btn-outline-secondary me-2">Год</button>
+            <button class="btn btn-outline-secondary me-2">Все</button>
+            <button class="btn btn-outline-secondary me-2">Интервал</button>
+            <span class="with me-3">с</span><span class="with-date-span">Дата</span>
+            <input type="date" class="date text-secondary" id="with-date">
+            <span class="with mx-3"> по </span><span class="with-date-span">Дата</span>
+            <input type="date" class="date text-secondary" id="on-date">
+        <table class="table text-center mt-5" style="width: 1000px;">
             <thead>
                 <tr class="table-header">
                     <th scope="col" style="width: 120px;">№ операции</th>
