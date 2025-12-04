@@ -211,3 +211,8 @@ input[type="date"]::after {
     color: #6C757D;
     border-bottom: 2px solid #6C757D;
 }
+
+.active {
+    background-color: #6C757D;
+    color: white;
+}

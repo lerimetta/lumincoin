@@ -19,7 +19,6 @@
                     <span>Главная</span>
                 </a>
             </li>
-
             <li class="">
                 <a href="#/inc-exp" class="nav-link link-body-emphasis select me-3">
                     <svg class="bi pe-none me-2" width="16" height="16" viewBox="0 0 16 16" fill="white"
@@ -66,76 +65,50 @@
                 <li><a class="dropdown-item text-center" href="#/logout">Выйти</a></li>
             </ul>
         </div>
-
     </div>
     <div class="p-4">
         <h1 class="title mt-5 mb-4">Доходы и расходы</h1>
         <a href="#/inc-exp-create" class="btn btn-success me-2">Создать доход</a>
-        <a href="#/inc-exp-create" class="btn btn-danger ">Создать расход</a>
+        <a href="#/inc-exp-create?type=expense" class="btn btn-danger">Создать расход</a>
         <div class="filter my-5">
-            <button class="btn btn-secondary me-2">Сегодня</button>
-            <button class="btn btn-outline-secondary me-2">Неделя</button>
-            <button class="btn btn-outline-secondary me-2">Месяц</button>
-            <button class="btn btn-outline-secondary me-2">Год</button>
-            <button class="btn btn-outline-secondary me-2">Все</button>
-            <button class="btn btn-outline-secondary me-2">Интервал</button>
+            <button class="btn btn-outline-secondary active me-2" id="today">Сегодня</button>
+            <button class="btn btn-outline-secondary me-2" id="week">Неделя</button>
+            <button class="btn btn-outline-secondary me-2" id="month">Месяц</button>
+            <button class="btn btn-outline-secondary me-2" id="year">Год</button>
+            <button class="btn btn-outline-secondary me-2" id="all">Все</button>
+            <button class="btn btn-outline-secondary me-2" id="interval">Интервал</button>
             <span class="with me-3">с</span><span class="with-date-span">Дата</span>
             <input type="date" class="date text-secondary" id="with-date">
             <span class="with mx-3"> по </span><span class="with-date-span">Дата</span>
             <input type="date" class="date text-secondary" id="on-date">
-        <table class="table text-center mt-5" style="width: 1000px;">
-            <thead>
-                <tr class="table-header">
-                    <th scope="col" style="width: 120px;">№ операции</th>
-                    <th scope="col">Тип</th>
-                    <th scope="col">Категория</th>
-                    <th scope="col">Сумма</th>
-                    <th scope="col">Дата</th>
-                    <th scope="col">Комментарий</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td class="text-success">доход</td>
-                    <td>зарплата</td>
-                    <td>500$</td>
-                    <td>11.09.2002</td>
-                    <td></td>
-                    <td>
-                        <a type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><img
-                                src="./assets/images/trash.svg" alt=""></a>
-                        <a href="#/inc-exp-edit"> <img src="./assets/images/pen.svg" alt=""></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td class="text-danger">расход</td>
-                    <td>жилье</td>
-                    <td>2500$</td>
-                    <td>11.09.2002</td>
-                    <td></td>
-                    <td>
-                        <a href="#"> <img src="./assets/images/trash.svg" alt=""></a>
-                        <a href="#"> <img src="./assets/images/pen.svg" alt=""></a>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table text-center mt-5" style="width: 1000px;">
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col" style="width: 120px;">№ операции</th>
+                        <th scope="col">Тип</th>
+                        <th scope="col">Категория</th>
+                        <th scope="col">Сумма</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Комментарий</th>
+                        <th scope="col">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
     </div>
-
-</div>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
-    style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content text-center py-4">
-            <div class="modal-body">
-                <p class="modal-text">Вы действительно хотите удалить операцию?</p>
-                <button type="button" class="btn btn-success me-2" data-bs-dismiss="modal">Да, удалить</button>
-                <button type="button" class="btn btn-danger">Не удалять</button>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+        style="display: none;">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content text-center py-4">
+                <div class="modal-body">
+                    <p class="modal-text">Вы действительно хотите удалить операцию?</p>
+                    <button type="button" class="btn btn-success me-2" data-bs-dismiss="modal" id="delete-button">Да,
+                        удалить</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -4,11 +4,12 @@ import { Main } from "./components/main.js";
 import { Incoms } from "./components/incoms.js";
 import { CreateIncom } from "./components/create-incom.js";
 import { IncExp } from "./components/inc-exp.js";
-import { IncExpCreate } from "./components/inc-exp-create.js";
 import { Expenses } from "./components/expenses.js";
 import { EditIncome } from "./components/incomes-edit.js";
 import { CreateExpense } from "./components/create-expense.js";
 import { EditExpense } from "./components/expenses-edit.js";
+import { EditIncExp } from "./components/inc-exp-edit.js";
+import { CreateIncExp } from "./components/inc-exp-create.js";
 
 
 export class Router {
@@ -60,7 +61,7 @@ export class Router {
                 template: 'src/templates/inc-exp-create.html',
                 load: () => {
                     Auth.authCheck();
-                    new IncExpCreate();
+                    new CreateIncExp();
                 }
             },
             {
@@ -69,6 +70,7 @@ export class Router {
                 template: 'src/templates/inc-exp-edit.html',
                 load: () => {
                     Auth.authCheck();
+                    new EditIncExp();
                 }
             },
             {
