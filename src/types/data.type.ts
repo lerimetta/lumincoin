@@ -1,5 +1,5 @@
 export type DataType = {
-    type: string,
+    type: 'pie',
     data: {
         labels: string[],
         datasets: [{

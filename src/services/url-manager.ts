@@ -7,7 +7,10 @@ export class UrlManager {
             tokens: RegExpExecArray | null,
             re: RegExp = /[?&]([^=]+)=([^&]*)/g;
         while (tokens = re.exec(qs)) {
-            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+            if(tokens){
+                params[decodeURIComponent(tokens[1] as string)] = decodeURIComponent(tokens[2] as string);
+            }
+       
         }
         return params;
     }

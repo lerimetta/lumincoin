@@ -1,14 +1,14 @@
 import config from "../../config/config";
 import { Auth } from "../services/auth";
 import { CustomHttp } from "../services/custom-http";
-import Chart from 'chart.js/auto';
+import {Chart} from 'chart.js/auto';
 import { DefaultResponseType } from "../types/default-response.type";
 import { IncExpResponseType } from "../types/inc-exp-response.type";
 import { DataType } from "../types/data.type";
 
 export class Main {
-    private myChart = null;
-    private myChart2 = null;
+    private myChart: Chart | null = null;
+    private myChart2: Chart | null = null;
     private result: IncExpResponseType[] | DefaultResponseType | null = null;
     private todayButton: HTMLElement | null;
     private weekButton: HTMLElement | null;
@@ -102,7 +102,7 @@ export class Main {
                 this.init();
             }
         }
-        // const ctx2 = document.getElementById('myChart2');
+    
         this.data = {
             type: 'pie',
             data: {
@@ -162,15 +162,16 @@ export class Main {
 
             }
         }
+        this.init();
         Chart.defaults.color = '#052C65';
         Chart.defaults.font.weight = 500;
-        this.init();
 
     }
 
     private async init(): Promise<void> {
         const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-        const ctx2 = document.getElementById('myChart2') as HTMLCanvasElement;;
+        const ctx2 = document.getElementById('myChart2') as HTMLCanvasElement;
+    
         try {
             let currentButton: HTMLElement | null = document.querySelector('.active') as HTMLElement;
             let period: string | null = currentButton.getAttribute('id');
@@ -264,6 +265,7 @@ export class Main {
                 this.data2.data.datasets[0].data = amountExpense;
                 this.myChart = new Chart(ctx, this.data);
                 this.myChart2 = new Chart(ctx2, this.data2);
+
                 return;
             }
 

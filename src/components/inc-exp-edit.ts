@@ -15,16 +15,13 @@ export class EditIncExp {
     private inputCategory: HTMLElement | null;
     private inputAmount: HTMLElement | null;
     private inputDate: HTMLElement | null;
-
     private result: IncExpCreateResponseType | DefaultResponseType | null = null;
     private editButton: HTMLElement | null;
     private errorAmount: HTMLElement | null;
     private errorDate: HTMLElement | null;
     private errorComment: HTMLElement | null;
     private inputComment: HTMLElement | null;
-
-
-
+  
     constructor() {
         this.params = UrlManager.getQueryParams();
         this.datas = {
@@ -41,6 +38,7 @@ export class EditIncExp {
         this.inputAmount = document.getElementById('amount-input');
         if (this.inputAmount) {
             this.inputAmount.onchange = () => { this.datas.amount = Number((this.inputAmount as HTMLInputElement).value) };
+      
         }
 
         this.inputDate = document.getElementById('date-input');
@@ -56,15 +54,13 @@ export class EditIncExp {
         if (this.editButton) {
             this.editButton.onclick = this.editCategory.bind(this);
         }
-
         // this.errorCategory = document.getElementById('error-category');
         this.errorAmount = document.getElementById('error-amount');
         this.errorDate = document.getElementById('error-date');
         this.errorComment = document.getElementById('error-comment');
         this.getCategory();
-
     }
-
+    
     private async editCategory(): Promise<void> {
         let isValid: boolean = this.isValidForm();
         if (isValid) {
@@ -101,14 +97,18 @@ export class EditIncExp {
                 }
                 (this.inputType as HTMLInputElement).value = (this.result as IncExpCreateResponseType).type === 'income' ? 'Доход' : 'Расход';
                 (this.inputType as HTMLInputElement).setAttribute('readonly', 'readonly');
-                (this.inputCategory as HTMLInputElement).value = (this.result as IncExpCreateResponseType).category;
+                if((this.result as IncExpCreateResponseType).category=== undefined){
+                    (this.inputCategory as HTMLInputElement).value = "без категории"; 
+                }else {
+                    (this.inputCategory as HTMLInputElement).value = (this.result as IncExpCreateResponseType).category;
+                }           
                 (this.inputAmount as HTMLInputElement).value = (this.result as IncExpCreateResponseType).amount.toLocaleString();
                 (this.inputDate as HTMLInputElement).value = (this.result as IncExpCreateResponseType).date;
                 (this.inputComment as HTMLInputElement).value = (this.result as IncExpCreateResponseType).comment;
                 this.datas.amount = Number((this.inputAmount as HTMLInputElement).value);
                 this.datas.date = (this.inputDate as HTMLInputElement).value;
                 this.datas.comment = (this.inputComment as HTMLInputElement).value;
-                this.datas.category_id = (categoryId as ResultCategoryResponseType).id;
+                // this.datas.category_id = (categoryId as ResultCategoryResponseType).id;
                 Auth.getBalance();
                 return;
             }

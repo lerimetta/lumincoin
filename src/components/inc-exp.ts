@@ -171,7 +171,7 @@ export class IncExp {
             trElement.appendChild(tdElement);
             const categoryElement: HTMLTableCellElement = document.createElement('td');
             if (!element.category) {
-                categoryElement.innerText = 'Без категории';
+                categoryElement.innerText = 'без категории';
             } else {
                 categoryElement.innerText = element.category.toLowerCase();
             }
